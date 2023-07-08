@@ -30,6 +30,16 @@ const islive = new SlashCommandBuilder()
       .setDescription("Twitch channel name (optional)")
   );
 
-const commands = [ping, title, game, islive];
+const logo = new SlashCommandBuilder()
+  .setName("logo")
+  .setDescription("Replies with Twitch channel logo!")
+  .addStringOption((option) =>
+    option
+      .setName("channel")
+      .setDescription("Twitch channel name (optional)")
+  );
+
+
+const commands = [ ping, title, game, islive, logo ];
 
 module.exports = commands;

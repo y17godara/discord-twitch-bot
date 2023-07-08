@@ -58,6 +58,16 @@ const fetchStreamGame = async (channelName) => {
   }
 };
 
+const fetchStreamLogo = async (channelName) => {
+  try {
+    const { thumbnail_url } = await fetchStreamData(channelName);
+    return thumbnail_url;
+  } catch (error) {
+    console.error("Failed to fetch stream thumbnail:", error);
+    throw new Error("Failed to fetch stream thumbnail");
+  }
+};
+
 const isChannelLive = async (channelName) => {
   try {
     const { is_live } = await fetchStreamData(channelName);
@@ -71,5 +81,6 @@ const isChannelLive = async (channelName) => {
 module.exports = {
   fetchStreamTitle,
   fetchStreamGame,
+  fetchStreamLogo,
   isChannelLive,
 };
