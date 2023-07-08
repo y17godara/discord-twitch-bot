@@ -1,21 +1,35 @@
 // commands.js
-const commands = [
-  {
-    name: "ping",
-    description: "Replies with Pong!",
-  },
-  {
-    name: "title",
-    description: "Replies with Twitch Stream title!",
-  },
-  {
-    name: "game",
-    description: "Replies with Twitch Stream Game!",
-  },
-  {
-    name: "islive",
-    description: "Replies with Twitch Stream live status!",
-  },
-];
+const { SlashCommandBuilder } = require("@discordjs/builders");
+
+const ping = new SlashCommandBuilder()
+  .setName("ping")
+  .setDescription("Replies with Pong!");
+
+const title = new SlashCommandBuilder()
+  .setName("title")
+  .setDescription("Replies with Twitch Stream title!")
+  .addStringOption((option) =>
+    option
+      .setName("channel")
+      .setDescription("Twitch channel name (optional)")
+  );
+
+const game = new SlashCommandBuilder()
+  .setName("game")
+  .setDescription("Replies with Twitch Stream Game!")
+  .addStringOption((option) =>
+    option.setName("channel").setDescription("Twitch channel name (optional)")
+  );
+
+const islive = new SlashCommandBuilder()
+  .setName("islive")
+  .setDescription("Replies with Twitch Stream live status!")
+  .addStringOption((option) =>
+    option
+      .setName("channel")
+      .setDescription("Twitch channel name (optional)")
+  );
+
+const commands = [ping, title, game, islive];
 
 module.exports = commands;
